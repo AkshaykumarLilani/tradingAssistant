@@ -1,15 +1,114 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Trading Assistant</title>
 
-    <!--CSS-->
+<html>
+
+<head>
+    <!-- Image and text -->
+    <nav class="navbar navbar-dark bg-dark shadow">
+        <a class="navbar-brand" href="#">
+            Trading Assistant
+        </a>
+    </nav>
+    <title>Trading Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Bootsrap JS
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script> -->
+
+    <!--Custom CSS-->
     <link rel="stylesheet" href="css/onlycss.css">
 
-    <!-- Javascript-->
-    <script src="js/onlyjs.js"></script>
+    <!--Google Font Roboto Slab-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <!-- Custom Javascript-->
+    <script type="text/javascript" src="js/onlyjs.js"></script>
 </head>
+
 <body>
-    <h1>Testing</h1>
+
+    <div class="row no-gutters p-3 mx-auto">
+        <div class="card col-sm-4 border-dark">
+            <h3 class="card-header text-center">Calculate my <br>Position Size</h3>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td class="text-right">
+                            Max Loss:
+                        </td>
+                        <td>
+                            <input size="5" id="maxlossrupees" type="text" value=20>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            Entry Price:
+                        </td>
+                        <td>
+                            <input type="text" id="entryprice" name="entryprice" autofocus size="5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            Stop Loss:
+                        </td>
+                        <td>
+                            <input type="text" id="stoplossprice" name="stoplossprice" size="5">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">
+                            Position:
+                        </td>
+                        <td>
+                            <select name="cars" id="position">
+                                <option value="L">Long</option>
+                                <option value="S">Short</option>
+                            </select>
+                            <!-- <input type="radio" id="long" name="position" value="L">Long<br>
+                            <input type="radio" id="short" name="position" value="S">Short -->
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td colspan="2">
+                            <button type="button" onclick="calPositionSize()" class="btn btn-outline-primary btn-block">
+                                Calculate
+                            </button>
+                        </td>
+                    </tr> -->
+                </table>
+            </div>
+            <div class="card-footer">
+                <button type="button" onclick="calPositionSize()" class="btn btn-outline-primary btn-block">
+                    Calculate
+                </button>
+            </div>
+            <!-- <h3 class="card-footer text-right">Go with -></h3> -->
+            <!-- <p>Max loss: <span id="maxlossrupees1"></span></p> -->
+            <!-- <p>Entry Price: <span id="entryprice1"></span></p> -->
+            <!-- <p>Stop loss: <span id="stoplossprice1"></span></p> -->
+        </div>
+
+        <div class="card col-md-2 no-gutters text-center bg-secondary text-white">
+
+            <p class="card-body" id="finalPositionSize"></p>
+
+            <p class="card-footer">P1+P2</p>
+        </div>
+    </div>
+
 </body>
+
 </html>
