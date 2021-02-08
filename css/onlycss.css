@@ -1,1 +1,14 @@
+head, body{
+    font-family: 'Roboto Slab', serif;
+}
 
+#finalPositionSize{
+    font-size: 78px;
+}
+
+table, td{
+    width: auto;
+    /* border: 1px solid black; */
+    padding: 2%;
+    margin:auto;
+}
