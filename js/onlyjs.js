@@ -1,3 +1,4 @@
+//This calculates position size with max loss set including tax
 function calPositionSize() {
     "use strict"
 
@@ -7,7 +8,8 @@ function calPositionSize() {
         , finalPositionSize
         , position
         , shares = 1
-        , loss = 0;
+        , loss = 0
+        , t1;
 
     max_loss_rupees = document.getElementById("maxlossrupees").value;
     stoploss_price = document.getElementById('stoplossprice').value;
@@ -30,6 +32,7 @@ function calPositionSize() {
     }
 
     finalPositionSize = shares - 2;
+    t1 = calTarget(max_loss_rupees, entry_price, stoploss_price, position, finalPositionSize);
 
     //alert("entry_price");
     // document.getElementById("maxlossrupees1").innerHTML = max_loss_rupees;
@@ -39,9 +42,10 @@ function calPositionSize() {
     //finalPositionSize = "Jai Mata Di";
     //The position size is
     document.getElementById("finalPositionSize").innerHTML = finalPositionSize;
+    document.getElementById("firstTarget").innerHTML = t1;
 }
 
-
+//This function calculates tax with 0.03% brokerage
 function calTotalTax(shares, entry_price, exit_price, position) {
     let turnover, brokerage, stt, exchange_transaction_charges, gst, stamp_duty, sebi_charges, totalTax;
 
@@ -79,4 +83,40 @@ function calTotalTax(shares, entry_price, exit_price, position) {
     totalTax = brokerage + exchange_transaction_charges + gst + sebi_charges + stt + stamp_duty;
 
     return totalTax;
+}
+
+//This function calculates first target
+function calTarget(max_loss_rupees, entry_price, stoploss_price, position, shares) {
+				let t1;
+				let targetProfit = Math.abs(max_loss_rupees);
+				let profit = 0
+				, tax = 0;
+				
+				if (position == "S"){
+								t1 = parseFloat(entry_price) - 0.05
+								for (t1 ;profit <= targetProfit; t1 -= 0.05){
+												tax = calTotalTax(shares, entry_price, t1, position);
+												profit = ((entry_price - t1)*shares)-tax;
+								}
+								if (profit > max_loss_rupees)
+												t1 = t1 + 0.05;
+				}
+				else if (position == "L"){
+								t1 = parseFloat(entry_price) + 0.05;
+								for(t1 ; profit <= targetProfit; t1+=0.05){
+												tax = calTotalTax(shares, entry_price, t1, position);
+												profit = ((t1 - entry_price)*shares)-tax;
+												alert("entry price: " + entry_price + " | " + "t1: " + t1 + " | " + "tax" + tax + " | " + "profit:"
+         + profit);
+								}
+								if (profit > max_loss_rupees)
+												t1 = t1 - 0.05;
+				}
+				
+				
+				return round(t1, 2);
+}
+
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
