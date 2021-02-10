@@ -17,3 +17,7 @@ table, td{
         float: none; /* Added */
         margin-bottom: 10px; /* Added */
 }
+
+#tatext{
+    padding: 3px;
+}
