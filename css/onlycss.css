@@ -48,3 +48,7 @@ td{
     color: #121212;
     font-weight: bold;
 }
+
+.answercard{
+    height: 300px;
+}
