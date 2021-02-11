@@ -4,7 +4,7 @@
 
 <head>
     <!-- Image and text -->
-    <nav class="navbar navbar-dark bg-dark shadow">
+    <nav class="navbar navbar-dark shadow" style="background-color: #121212;">
         <a class="navbar-brand" href="#">
             <img src="imgs/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Trading Assistant
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Bootsrap JS
+    <!-- Bootsrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -26,7 +26,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script> -->
+        crossorigin="anonymous"></script>
 
     <!--Custom CSS-->
     <link rel="stylesheet" href="css/onlycss.css">
@@ -40,78 +40,98 @@
 </head>
 
 <body>
-
-    <div class="row no-gutters p-3 mx-auto">
-        <div class="card col-sm-4 border-dark">
-            <h3 class="card-header text-center">Calculate my <br>Position Size</h3>
-            <div class="card-body">
-                <table>
-                    <tr>
-                        <td class="text-right">
-                            Max Loss:
-                        </td>
-                        <td>
-                            <input size="5" id="maxlossrupees" type="text" value=20>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right">
-                            Entry Price:
-                        </td>
-                        <td>
-                            <input type="text" id="entryprice" name="entryprice" autofocus size="5">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right">
-                            Stop Loss:
-                        </td>
-                        <td>
-                            <input type="text" id="stoplossprice" name="stoplossprice" size="5">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right">
-                            Position:
-                        </td>
-                        <td>
-                            <select name="cars" id="position">
-                                <option value="L">Long</option>
-                                <option value="S">Short</option>
-                            </select>
-                            <!-- <input type="radio" id="long" name="position" value="L">Long<br>
+    <div class="container">
+        <div class="row no-gutters p-3 mx-auto">
+            <div class="card no-gutters col-6 border-dark">
+                <p class="card-header text-center border-secondary">1R Position Size & T1</p>
+                <div class="container card-body">
+                    <table>
+                        <tr>
+                            <td class="text-left">
+                                Max Loss:
+                            </td>
+                            <td>
+                                <input size="5" id="maxlossrupees" type="text" value=20>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">
+                                Entry Price:
+                            </td>
+                            <td>
+                                <input type="text" id="entryprice" name="entryprice" autofocus size="5">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">
+                                Stop Loss:
+                            </td>
+                            <td>
+                                <input type="text" id="stoplossprice" name="stoplossprice" size="5">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">
+                                Position:
+                            </td>
+                            <td>
+                                <select name="cars" id="position">
+                                    <option value="L">Long</option>
+                                    <option value="S">Short</option>
+                                </select>
+                                <!-- <input type="radio" id="long" name="position" value="L">Long<br>
                             <input type="radio" id="short" name="position" value="S">Short -->
-                        </td>
-                    </tr>
-                    <!-- <tr>
+                            </td>
+                        </tr>
+                        <!-- <tr>
                         <td colspan="2">
                             <button type="button" onclick="calPositionSize()" class="btn btn-outline-primary btn-block">
                                 Calculate
                             </button>
                         </td>
                     </tr> -->
-                </table>
+                    </table>
+                </div>
+                <div class="card-footer border-secondary">
+                    <button type="button" onclick="calPositionSize()" class="btn btn-outline-primary btn-block">
+                        Calculate
+                    </button>
+                </div>
+                <!-- <h3 class="card-footer text-right">Go with -></h3> -->
+                <!-- <p>Max loss: <span id="maxlossrupees1"></span></p> -->
+                <!-- <p>Entry Price: <span id="entryprice1"></span></p> -->
+                <!-- <p>Stop loss: <span id="stoplossprice1"></span></p> -->
             </div>
-            <div class="card-footer">
-                <button type="button" onclick="calPositionSize()" class="btn btn-outline-primary btn-block">
-                    Calculate
-                </button>
+
+            <div class="card col-6 border-secondary">
+                <div class="card-body">
+                    <table>
+                        <tr class="tr1">
+                            <td class="text-center">
+                                Final Position Size:
+                            </td>
+                            <td class="text-center" id="finalPositionSize">
+
+                            </td>
+                        </tr>
+                        <tr class="tr2">
+                            <td class="text-center">
+                                First Target:
+                            </td>
+                            <td class="text-center" id="firstTarget">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card-footer bg-dark">
+                    <button type="button" onclick="clearContents()" class="btn btn-outline-warning">clear</button>
+                </div>
+
             </div>
-            <!-- <h3 class="card-footer text-right">Go with -></h3> -->
-            <!-- <p>Max loss: <span id="maxlossrupees1"></span></p> -->
-            <!-- <p>Entry Price: <span id="entryprice1"></span></p> -->
-            <!-- <p>Stop loss: <span id="stoplossprice1"></span></p> -->
-        </div>
 
-        <div class="card col-md-2 no-gutters text-center bg-secondary text-white">
-
-            <p style="min-height:200px" class="card-body" id="finalPositionSize"></p>
-             <p style="min-height:200px" class="card-body" id="firstTarget"></p>
-
-            <p class="card-footer">P1+P2</p>
         </div>
     </div>
-
 </body>
 
 </html>
