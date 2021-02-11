@@ -87,36 +87,41 @@ function calTotalTax(shares, entry_price, exit_price, position) {
 
 //This function calculates first target
 function calTarget(max_loss_rupees, entry_price, stoploss_price, position, shares) {
-				let t1;
-				let targetProfit = Math.abs(max_loss_rupees);
-				let profit = 0
-				, tax = 0;
-				
-				if (position == "S"){
-								t1 = parseFloat(entry_price) - 0.05
-								for (t1 ;profit <= targetProfit; t1 -= 0.05){
-												tax = calTotalTax(shares, entry_price, t1, position);
-												profit = ((entry_price - t1)*shares)-tax;
-								}
-								if (profit > max_loss_rupees)
-												t1 = t1 + 0.05;
-				}
-				else if (position == "L"){
-								t1 = parseFloat(entry_price) + 0.05;
-								for(t1 ; profit <= targetProfit; t1+=0.05){
-												tax = calTotalTax(shares, entry_price, t1, position);
-												profit = ((t1 - entry_price)*shares)-tax;
-												alert("entry price: " + entry_price + " | " + "t1: " + t1 + " | " + "tax" + tax + " | " + "profit:"
-         + profit);
-								}
-								if (profit > max_loss_rupees)
-												t1 = t1 - 0.05;
-				}
-				
-				
-				return round(t1, 2);
+    let t1;
+    let targetProfit = Math.abs(max_loss_rupees);
+    let profit = 0
+        , tax = 0;
+
+    if (position == "S") {
+        t1 = parseFloat(entry_price) - 0.05
+        for (t1; profit <= targetProfit; t1 -= 0.05) {
+            tax = calTotalTax(shares, entry_price, t1, position);
+            profit = ((entry_price - t1) * shares) - tax;
+        }
+        if (profit > max_loss_rupees)
+            t1 = t1 + 0.05;
+    }
+    else if (position == "L") {
+        t1 = parseFloat(entry_price) + 0.05;
+        for (t1; profit <= targetProfit; t1 += 0.05) {
+            tax = calTotalTax(shares, entry_price, t1, position);
+            profit = ((t1 - entry_price) * shares) - tax;
+            //alert("entry price: " + entry_price + " | " + "t1: " + t1 + " | " + "tax" + tax + " | " + "profit:"
+            //+ profit);
+        }
+        if (profit > max_loss_rupees)
+            t1 = t1 - 0.05;
+    }
+
+
+    return round(t1, 2);
 }
 
 function round(value, decimals) {
-  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+}
+
+function clearContents() {
+    document.getElementById("firstTarget").innerHTML = "";
+    document.getElementById("finalPositionSize").innerHTML = "";
 }
