@@ -124,4 +124,8 @@ function round(value, decimals) {
 function clearContents() {
     document.getElementById("firstTarget").innerHTML = "";
     document.getElementById("finalPositionSize").innerHTML = "";
+    document.getElementById("stoplossprice").value = "";
+    document.getElementById("entryprice").value = "";
+
+    document.getElementById("entryprice").focus();
 }
