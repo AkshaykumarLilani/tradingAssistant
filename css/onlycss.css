@@ -3,15 +3,37 @@ head, body{
 }
 
 #finalPositionSize{
-    font-size: 78px;
+    height: 60%;
+    font-size: 4em;
 }
 
-table, td{
-    width: auto;
+#firstTarget{
+    height: 40%;
+    font-size: 2em;
+}
+
+table{
+    width: 100%;
+    height: 100%;
     /* border: 1px solid black; */
     padding: 2%;
     margin:auto;
+    vertical-align: middle;
 }
+
+td{
+    width: 50%;
+    /* border: 1px solid black; */
+    vertical-align: middle;
+}
+
+.tr1{
+    border-bottom: 1px dashed black;
+}
+.tr2{
+
+}
+
 .card {
         margin: 0 auto; /* Added */
         float: none; /* Added */
@@ -20,4 +42,9 @@ table, td{
 
 #tatext{
     margin: auto;
+}
+
+.card-header{
+    color: #121212;
+    font-weight: bold;
 }
